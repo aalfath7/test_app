@@ -10,12 +10,3 @@ export const login = async (identifier, password) => {
   });
   return res.data;
 };
-
-export const getArticles = async (jwt) => {
-  const res = await axios.get(`${API_URL}/articles`, {
-    headers: {
-      Authorization: `Bearer ${jwt}`,
-    },
-  });
-  return res.data;
-};
