@@ -138,7 +138,7 @@ http://localhost:1337/admin
 
 Buat akun admin terlebih dahulu.
 
-<img src="register-admin.png" alt="Daftar Akun Admin" width="240"/>
+<img src="strapi-regis.png" alt="Daftar Akun Admin" width="240"/>
 
 Setelah itu, akan masuk ke dashboard Strapi.
 
