@@ -20,7 +20,6 @@ const router = createRouter({
   ],
 });
 
-// Global Navigation Guard
 router.beforeEach((to, from, next) => {
   const auth = useAuthStore();
 

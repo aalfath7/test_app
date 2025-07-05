@@ -301,7 +301,6 @@ const fetchData = async () => {
   const token = localStorage.getItem("token");
 
   try {
-    // Student Lesson (Line Chart)
     const studentLessonRes = await axios.get(
       "http://localhost:1337/api/student-lessons?populate=student",
       {
@@ -327,7 +326,6 @@ const fetchData = async () => {
       ],
     };
 
-    // Count Students & Teachers (Pie Chart)
     const studentRes = await axios.get("http://localhost:1337/api/students", {
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -348,11 +346,9 @@ const fetchData = async () => {
       ],
     };
 
-    // Fill names
     students.value = studentRes.data.data.map((s) => s.student_name);
     teachers.value = teacherRes.data.data.map((t) => t.teacher_name);
 
-    // Lessons
     const lessonRes = await axios.get("http://localhost:1337/api/lessons", {
       headers: { Authorization: `Bearer ${token}` },
     });
