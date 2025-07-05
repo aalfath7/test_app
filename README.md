@@ -1,88 +1,157 @@
-# 📚 Contoh Normalisasi Basis Data — Studi Kasus Siswa Sekolah
+## Apa itu Normalisasi Basis Data?
 
-Dokumen ini menjelaskan proses **normalisasi basis data** dengan fokus pada **perbedaan nyata antara 2NF dan 3NF**, menggunakan studi kasus siswa sekolah yang mengikuti mata pelajaran tertentu.
-
----
-
-## 🧑‍🏫 Studi Kasus
-
-Setiap siswa memiliki NISN dan mengikuti beberapa mata pelajaran.  
-Setiap mata pelajaran diajar oleh seorang guru, dan setiap siswa mendapat nilai dari tiap mata pelajaran tersebut.
+Normalisasi basis data adalah proses menyusun struktur tabel dalam basis data relational untuk mengurangi `redundansi` data (pengulangan) dan meningkatkan `integritas` data (data lebih konsisten dan rapi).
 
 ---
 
-## 🔴 UNF - Unnormalized Form
+## Contoh Tabel yang Belum Dinormalisasi (UNF, unnormalized form)
 
-Data masih digabung dalam satu tabel dengan banyak nilai di satu kolom:
+Data pada satu tabel memiliki banyak nilai dalam satu kolom:
 
-| Nama Siswa | NISN | Mata Pelajaran  | Nilai | Guru       |
-| ---------- | ---- | --------------- | ----- | ---------- |
-| Andi       | 001  | Matematika, IPA | 85,90 | Budi, Rina |
-| Sari       | 002  | Matematika      | 75    | Budi       |
-
----
-
-## ✅ 1NF - First Normal Form
-
-Setiap kolom hanya berisi satu nilai (atomik):
-
-| NISN | Nama Siswa | Mata Pelajaran | Nilai | Guru |
-| ---- | ---------- | -------------- | ----- | ---- |
-| 001  | Andi       | Matematika     | 85    | Budi |
-| 001  | Andi       | IPA            | 90    | Rina |
-| 002  | Sari       | Matematika     | 75    | Budi |
+| student_name | nisn | lesson_name   | teacher     |
+| ------------ | ---- | ------------- | ----------- |
+| Joko         | 001  | Math, Science | John, Jordi |
+| Johan        | 002  | Math          | John        |
 
 ---
 
-## ✅ 2NF - Second Normal Form
+Proses normalisasi terdiri dari beberapa tahap, yaitu : `1NF`, `2NF`, dan `3NF`.
 
-> Sudah 1NF, dan semua kolom non-kunci bergantung pada **seluruh** kunci utama.  
-> Tetapi masih terdapat **transitive dependency**.
+## 1NF (First Normal Form)
 
-### Tabel Nilai Siswa (2NF)
+- Kolom harus bernilai **atomik**.
+- Tidak boleh ada **repeating group** / **pengulangan kolom sejenis**.
 
-| NISN | KodeMapel | Nilai | NamaMapel  | NamaGuru |
-| ---- | --------- | ----- | ---------- | -------- |
-| 001  | MP01      | 85    | Matematika | Budi     |
-| 001  | MP02      | 90    | IPA        | Rina     |
-| 002  | MP01      | 75    | Matematika | Budi     |
+## 2NF (Second Normal Form)
 
-📌 **Masalah:** `NamaMapel` dan `NamaGuru` tergantung pada `KodeMapel`, **bukan pada (NISN, KodeMapel)**.  
-Ini disebut **transitive dependency** → belum 3NF.
+- Sudah memenuhi 1NF
+- Setiap kolom non-primary key harus bergantung **sepenuhnya** pada primary key (tidak hanya sebagian)
+
+## 3NF (Third Normal Form)
+
+- Sudah memenuhi 2NF
+- Tidak ada **transitive dependency** (kolom non-primary tidak boleh bergantung pada kolom non-primary lain)
+
+## Tabel yang Sudah Dinormalisasi
+
+#### Tabel `teacher`
+
+| id  | teacher_name |
+| --- | ------------ |
+| 1   | John         |
+| 2   | Jordi        |
+
+#### Tabel `lesson`
+
+| id  | lesson_name | teacher_id |
+| --- | ----------- | ---------- |
+| 1   | Math        | 1          |
+| 2   | Science     | 2          |
+
+#### Tabel `student`
+
+| id  | student_name | nisn |
+| --- | ------------ | ---- |
+| 1   | Joko         | 001  |
+| 2   | Johan        | 002  |
+| 3   | Putri        | 003  |
+
+#### Tabel `student_lesson`
+
+| id  | student_id | lesson_id |
+| --- | ---------- | --------- |
+| 1   | 1          | 1         |
+| 2   | 1          | 2         |
+| 3   | 2          | 1         |
+
+Setelah dilakukan normalisasi data dibagi menjadi 3 tabel terpisah, agar memenuhi aturan normalisasi:
+
+- Setiap kolom bernilai atomik.
+- Tidak ada pengulangan kolom sejenis.
+- Setiap kolom non-primary key bergantung sepenuhnya pada primary key.
+- Tidak ada transitive dependency antar kolom non-primary.
 
 ---
 
-## ✅ 3NF - Third Normal Form
+# Instalasi Aplikasi – Vue.js + Strapi
 
-> Menghilangkan transitive dependency dengan memecah tabel menjadi beberapa entitas.
+Repositori ini berisi dua bagian utama:
 
-### Tabel Siswa
-
-| NISN | NamaSiswa |
-| ---- | --------- |
-| 001  | Andi      |
-| 002  | Sari      |
-
-### Tabel Guru
-
-| KodeGuru | NamaGuru |
-| -------- | -------- |
-| G001     | Budi     |
-| G002     | Rina     |
-
-### Tabel Mata Pelajaran
-
-| KodeMapel | NamaMapel  | KodeGuru |
-| --------- | ---------- | -------- |
-| MP01      | Matematika | G001     |
-| MP02      | IPA        | G002     |
-
-### Tabel Nilai
-
-| NISN | KodeMapel | Nilai |
-| ---- | --------- | ----- |
-| 001  | MP01      | 85    |
-| 001  | MP02      | 90    |
-| 002  | MP01      | 75    |
+- **frontend/**: Aplikasi frontend menggunakan VueJS
+- **backend/**: API backend menggunakan Strapi
 
 ---
+
+## 📦 Prasyarat
+
+- [Node.js](https://nodejs.org/) v18+
+- [MySQL](https://www.mysql.com/)
+
+## Panduan Instalasi
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/username/test_app.git
+cd test_app
+```
+
+### 1. Persiapan Basis Data
+
+Import file `school_db.sql` ke dalam basis data MySQL dengan nama database `school_db`.
+
+### 2. Install & Run Backend (Strapi)
+
+```
+cd backend
+```
+
+Install dependencies
+
+```
+npm install
+```
+
+Salin file .env.example menjadi .env. Jika diperlukan sesuaikan isinya sesuai kebutuhan.
+
+```
+cp .env.example .env
+```
+
+Jalankan Strapi
+
+```
+npm run develop
+```
+
+Akses Strapi di:
+
+```
+http://localhost:1337/admin
+```
+
+### 3. Install & Run Frontend (Vue.js)
+
+buka terminal baru
+
+```
+cd frontend
+```
+
+Install dependencies
+
+```
+npm install
+```
+
+Jalankan development server
+
+```
+npm run dev
+```
+
+Akses aplikasi Vue di:
+
+```
+http://localhost:5173
+```
