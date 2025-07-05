@@ -92,7 +92,7 @@ Repositori ini berisi dua bagian utama:
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/username/test_app.git
+https://github.com/aalfath7/test_app.git
 cd test_app
 ```
 
