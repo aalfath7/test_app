@@ -17,17 +17,17 @@ Data pada satu tabel memiliki banyak nilai dalam satu kolom:
 
 Proses normalisasi terdiri dari beberapa tahap, yaitu : `1NF`, `2NF`, dan `3NF`.
 
-## 1NF (First Normal Form)
+#### 1NF (First Normal Form)
 
 - Kolom harus bernilai **atomik**.
 - Tidak boleh ada **repeating group** / **pengulangan kolom sejenis**.
 
-## 2NF (Second Normal Form)
+#### 2NF (Second Normal Form)
 
 - Sudah memenuhi 1NF
 - Setiap kolom non-primary key harus bergantung **sepenuhnya** pada primary key (tidak hanya sebagian)
 
-## 3NF (Third Normal Form)
+#### 3NF (Third Normal Form)
 
 - Sudah memenuhi 2NF
 - Tidak ada **transitive dependency** (kolom non-primary tidak boleh bergantung pada kolom non-primary lain)
@@ -82,7 +82,7 @@ Repositori ini berisi dua bagian utama:
 
 ---
 
-## 📦 Prasyarat
+## Prasyarat
 
 - [Node.js](https://nodejs.org/) v18+
 - [MySQL](https://www.mysql.com/)
