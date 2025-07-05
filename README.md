@@ -73,6 +73,8 @@ Setelah dilakukan normalisasi data dibagi menjadi 3 tabel terpisah, agar memenuh
 
 ---
 
+\*catatan : ada penyesuaian pada implementasi karena menggunakan strapi. Yaitu pada tabel student_lesson, kolom diubah menjadi id, student, dan lesson.
+
 ## Instalasi Aplikasi – Vue.js + Strapi
 
 Repositori ini berisi dua bagian utama:
@@ -98,7 +100,11 @@ cd test_app
 
 ### 1. Persiapan Basis Data
 
-Import file `school_db.sql` ke dalam basis data MySQL dengan nama database `school_db`.
+Jalankan MySQL server (misalnya menggunakan XAMPP).
+
+Buat basis data baru dengan nama `school_db` di MySQL.
+
+Import file `school_db.sql` di folder backend ke dalam basis data tersebut.
 
 ### 2. Install & Run Backend (Strapi)
 
@@ -112,7 +118,7 @@ Install dependencies
 npm install
 ```
 
-Salin file .env.example menjadi .env. Jika diperlukan sesuaikan isinya sesuai kebutuhan.
+Salin file .env.example menjadi .env
 
 ```
 cp .env.example .env
@@ -129,6 +135,12 @@ Akses Strapi di:
 ```
 http://localhost:1337/admin
 ```
+
+Buat akun admin terlebih dahulu.
+
+<img src="register-admin.png" alt="Daftar Akun Admin" width="240"/>
+
+Setelah itu, akan masuk ke dashboard Strapi.
 
 ### 3. Install & Run Frontend (Vue.js)
 
@@ -155,3 +167,7 @@ Akses aplikasi Vue di:
 ```
 http://localhost:5173
 ```
+
+Login menggunakan username : `tes` dan password : `123456`.
+
+Atau buat user baru di dashboard Strapi.
