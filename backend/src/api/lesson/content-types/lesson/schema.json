@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lessons",
+  "info": {
+    "singularName": "lesson",
+    "pluralName": "lessons",
+    "displayName": "lesson"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "lesson_name": {
+      "type": "string"
+    },
+    "teacher": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::teacher.teacher",
+      "inversedBy": "lesson"
+    },
+    "student_lessons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-lesson.student-lesson",
+      "mappedBy": "lesson"
+    }
+  }
+}

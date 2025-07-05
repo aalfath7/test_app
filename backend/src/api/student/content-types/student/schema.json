@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "students",
+  "info": {
+    "singularName": "student",
+    "pluralName": "students",
+    "displayName": "student"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "student_name": {
+      "type": "string"
+    },
+    "nisn": {
+      "type": "string"
+    },
+    "student_lessons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::student-lesson.student-lesson",
+      "mappedBy": "student"
+    }
+  }
+}

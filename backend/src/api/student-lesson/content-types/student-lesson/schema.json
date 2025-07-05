@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "student_lessons",
+  "info": {
+    "singularName": "student-lesson",
+    "pluralName": "student-lessons",
+    "displayName": "student_lesson"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "student": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::student.student",
+      "inversedBy": "student_lessons"
+    },
+    "lesson": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lesson.lesson",
+      "inversedBy": "student_lessons"
+    }
+  }
+}
