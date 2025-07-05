@@ -1,13 +1,11 @@
 <template>
-  <div
-    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4"
-  >
+  <div class="min-h-screen flex items-center justify-center p-4">
     <div
       class="bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-xl w-full max-w-sm border border-white/20"
     >
       <div class="flex flex-col items-center mb-8">
-        <h1 class="text-2xl font-bold text-gray-800">Welcome</h1>
-        <p class="text-gray-500 text-sm mt-1">Sign in to your account</p>
+        <h1 class="text-2xl font-bold text-gray-800">Selamat Datang</h1>
+        <p class="text-gray-500 text-sm mt-1">Login ke Aplikasi</p>
       </div>
 
       <form @submit.prevent="handleLogin" class="space-y-4">
@@ -69,7 +67,7 @@
           type="submit"
           class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white py-3 px-4 rounded-xl transition-all font-semibold shadow-md hover:shadow-lg active:scale-[0.98] cursor-pointer"
         >
-          Sign In
+          Login
         </button>
       </form>
 

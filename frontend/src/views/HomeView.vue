@@ -91,23 +91,17 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="bg-white p-6 rounded-xl shadow-md">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-semibold text-gray-800">Jumlah guru dan siswa</h2>
-        </div>
-        <div class="h-64">
-          <Pie
-            v-if="pieChartData"
-            :data="pieChartData"
-            :options="{ responsive: true, maintainAspectRatio: false }"
-          />
+        <h2 class="text-xl font-semibold text-gray-800 text-center">Jumlah guru dan siswa</h2>
+        <div class="h-64 flex items-center justify-center py-6">
+          <Pie v-if="pieChartData" :data="pieChartData" :options="pieChartOptions" />
         </div>
       </div>
 
       <div class="bg-white p-6 rounded-xl shadow-md">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-semibold text-gray-800">Pelajaran yang diambil siswa</h2>
-        </div>
-        <div class="h-64">
+        <h2 class="text-xl font-semibold text-gray-800 text-center">
+          Pelajaran yang diambil siswa
+        </h2>
+        <div class="h-64 flex justify-center items-center py-6">
           <Bar v-if="barChartData" :data="barChartData" :options="barChartOptions" />
         </div>
       </div>
@@ -120,7 +114,7 @@
           <li
             v-for="(item, i) in students"
             :key="'s-' + i"
-            class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg"
+            class="flex items-center gap-2 hover:bg-gray-50 rounded-lg"
           >
             <span class="capitalize text-gray-700">{{ i + 1 }}. {{ item }}</span>
           </li>
@@ -133,7 +127,7 @@
           <li
             v-for="(item, i) in teachers"
             :key="'g-' + i"
-            class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg"
+            class="flex items-center gap-2 hover:bg-gray-50 rounded-lg"
           >
             <span class="capitalize text-gray-700">{{ i + 1 }}. {{ item }}</span>
           </li>
@@ -142,11 +136,11 @@
 
       <div class="bg-white p-6 rounded-xl shadow-md">
         <h3 class="font-bold text-lg text-gray-800 mb-4">Daftar Pelajaran</h3>
-        <ul class="space-y-2">
+        <ul>
           <li
             v-for="(item, i) in lessons"
             :key="'l-' + i"
-            class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg"
+            class="flex items-center gap-2 hover:bg-gray-50 rounded-lg"
           >
             <span class="capitalize text-gray-700">{{ i + 1 }}. {{ item }}</span>
           </li>
@@ -176,6 +170,12 @@ import { Pie, Bar } from "vue-chartjs";
 ChartJS.register(Title, Tooltip, Legend, ArcElement, BarElement, CategoryScale, LinearScale);
 
 const pieChartData = ref(null);
+const pieChartOptions = {
+  responsive: true,
+  plugins: {
+    legend: { display: false },
+  },
+};
 
 const barChartData = ref(null);
 const barChartOptions = {
