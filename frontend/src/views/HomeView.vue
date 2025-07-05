@@ -3,33 +3,20 @@
     <div class="flex justify-between items-center">
       <div>
         <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
-        <p class="text-gray-500">Overview of school data and statistics</p>
       </div>
       <button
         @click="logout"
-        class="flex items-center gap-2 text-sm bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md cursor-pointer transition-colors"
+        class="flex items-center gap-2 text-sm bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md cursor-pointer"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-            clip-rule="evenodd"
-          />
-        </svg>
         Logout
       </button>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500">
+      <div class="bg-white p-6 rounded-xl shadow-md border-b-4 border-blue-500">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-500 font-medium">Total Students</p>
+            <p class="text-gray-500 font-medium">Jumlah Siswa</p>
             <h3 class="text-2xl font-bold text-gray-800">{{ students.length }}</h3>
           </div>
           <div class="p-3 rounded-full bg-blue-100 text-blue-600">
@@ -51,10 +38,10 @@
         </div>
       </div>
 
-      <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500">
+      <div class="bg-white p-6 rounded-xl shadow-md border-b-4 border-green-500">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-500 font-medium">Total Teachers</p>
+            <p class="text-gray-500 font-medium">Jumlah Guru</p>
             <h3 class="text-2xl font-bold text-gray-800">{{ teachers.length }}</h3>
           </div>
           <div class="p-3 rounded-full bg-green-100 text-green-600">
@@ -76,10 +63,10 @@
         </div>
       </div>
 
-      <div class="bg-white p-6 rounded-xl shadow-md border-l-4 border-purple-500">
+      <div class="bg-white p-6 rounded-xl shadow-md border-b-4 border-purple-500">
         <div class="flex items-center justify-between">
           <div>
-            <p class="text-gray-500 font-medium">Total Subjects</p>
+            <p class="text-gray-500 font-medium">Jumlah Pelajaran</p>
             <h3 class="text-2xl font-bold text-gray-800">{{ lessons.length }}</h3>
           </div>
           <div class="p-3 rounded-full bg-purple-100 text-purple-600">
@@ -105,29 +92,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="bg-white p-6 rounded-xl shadow-md">
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-semibold text-gray-800">Teachers vs Students</h2>
-          <div class="text-blue-500">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
-              />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"
-              />
-            </svg>
-          </div>
+          <h2 class="text-xl font-semibold text-gray-800">Jumlah guru dan siswa</h2>
         </div>
         <div class="h-64">
           <Pie
@@ -140,23 +105,7 @@
 
       <div class="bg-white p-6 rounded-xl shadow-md">
         <div class="flex items-center justify-between mb-4">
-          <h2 class="text-xl font-semibold text-gray-800">Lessons per Student</h2>
-          <div class="text-green-500">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              />
-            </svg>
-          </div>
+          <h2 class="text-xl font-semibold text-gray-800">Pelajaran yang diambil siswa</h2>
         </div>
         <div class="h-64">
           <Bar v-if="barChartData" :data="barChartData" :options="barChartOptions" />
@@ -166,96 +115,40 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="bg-white p-6 rounded-xl shadow-md">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="p-2 rounded-lg bg-blue-100 text-blue-600">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v1h8v-1zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-1a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v1h-3zM4.75 12.094A5.973 5.973 0 004 15v1H1v-1a3 3 0 013.75-2.906z"
-              />
-            </svg>
-          </div>
-          <h3 class="font-bold text-lg text-gray-800">Students List</h3>
-        </div>
-        <ul class="space-y-2">
+        <h3 class="font-bold text-lg text-gray-800 mb-4">Daftar Siswa</h3>
+        <ul>
           <li
-            v-for="(s, i) in students"
+            v-for="(item, i) in students"
             :key="'s-' + i"
-            class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg transition-colors"
+            class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg"
           >
-            <span
-              class="w-6 h-6 flex items-center justify-center bg-blue-100 text-blue-600 rounded-full text-xs font-medium"
-              >{{ i + 1 }}</span
-            >
-            <span class="capitalize text-gray-700">{{ s }}</span>
+            <span class="capitalize text-gray-700">{{ i + 1 }}. {{ item }}</span>
           </li>
         </ul>
       </div>
 
       <div class="bg-white p-6 rounded-xl shadow-md">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="p-2 rounded-lg bg-green-100 text-green-600">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </div>
-          <h3 class="font-bold text-lg text-gray-800">Teachers List</h3>
-        </div>
-        <ul class="space-y-2">
+        <h3 class="font-bold text-lg text-gray-800 mb-4">Daftar Guru</h3>
+        <ul>
           <li
-            v-for="(g, i) in teachers"
+            v-for="(item, i) in teachers"
             :key="'g-' + i"
-            class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg transition-colors"
+            class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg"
           >
-            <span
-              class="w-6 h-6 flex items-center justify-center bg-green-100 text-green-600 rounded-full text-xs font-medium"
-              >{{ i + 1 }}</span
-            >
-            <span class="capitalize text-gray-700">{{ g }}</span>
+            <span class="capitalize text-gray-700">{{ i + 1 }}. {{ item }}</span>
           </li>
         </ul>
       </div>
 
       <div class="bg-white p-6 rounded-xl shadow-md">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="p-2 rounded-lg bg-purple-100 text-purple-600">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"
-              />
-            </svg>
-          </div>
-          <h3 class="font-bold text-lg text-gray-800">Subjects List</h3>
-        </div>
+        <h3 class="font-bold text-lg text-gray-800 mb-4">Daftar Pelajaran</h3>
         <ul class="space-y-2">
           <li
-            v-for="(l, i) in lessons"
+            v-for="(item, i) in lessons"
             :key="'l-' + i"
-            class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg transition-colors"
+            class="flex items-center gap-2 p-2 hover:bg-gray-50 rounded-lg"
           >
-            <span
-              class="w-6 h-6 flex items-center justify-center bg-purple-100 text-purple-600 rounded-full text-xs font-medium"
-              >{{ i + 1 }}</span
-            >
-            <span class="capitalize text-gray-700">{{ l }}</span>
+            <span class="capitalize text-gray-700">{{ i + 1 }}. {{ item }}</span>
           </li>
         </ul>
       </div>
@@ -290,6 +183,15 @@ const barChartOptions = {
   plugins: {
     legend: { display: false },
     title: { display: true, text: "Jumlah Pelajaran yang Diikuti" },
+  },
+  scales: {
+    y: {
+      beginAtZero: true,
+      ticks: {
+        stepSize: 1,
+        precision: 0,
+      },
+    },
   },
 };
 
@@ -366,5 +268,8 @@ function logout() {
   auth.logout();
 }
 
-onMounted(fetchData);
+onMounted(() => {
+  fetchData();
+  document.title = "Dashboard";
+});
 </script>

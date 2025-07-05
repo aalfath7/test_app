@@ -73,7 +73,7 @@ Setelah dilakukan normalisasi data dibagi menjadi 3 tabel terpisah, agar memenuh
 
 ---
 
-# Instalasi Aplikasi – Vue.js + Strapi
+## Instalasi Aplikasi – Vue.js + Strapi
 
 Repositori ini berisi dua bagian utama:
 
